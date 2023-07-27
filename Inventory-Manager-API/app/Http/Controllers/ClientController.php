@@ -10,56 +10,42 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index () {
+        $clients = Client::all();
+        return response()->json($clients, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function show ($id) {
+        $client = Client::find($id);
+        return response()->json($client, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function create (){
+        $client = new Client;
+        $client->first_name = request('first_name');
+        $client->last_name = request('last_name');
+        $client->email = request('email');
+        $client->phone = request('phone');
+        $client->save();
+
+        return response()->json($client, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Client $client)
-    {
-        //
+    public function update ($id){
+        $client = Client::find($id);
+        $client->first_name = request('first_name');
+        $client->last_name = request('last_name');
+        $client->email = request('email');
+        $client->phone = request('phone');
+        $client->save();
+
+        return response()->json($client, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Client $client)
-    {
-        //
-    }
+    public function destroy ($id){
+        $client = Client::find($id);
+        $client->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Client $client)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Client $client)
-    {
-        //
+        return response()->json($client, 200); 
     }
 }
