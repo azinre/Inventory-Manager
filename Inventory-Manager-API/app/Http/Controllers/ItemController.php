@@ -15,53 +15,67 @@ class ItemController extends Controller
         $items = Item::all();
         return response()->json($items, 200);
     }
-
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $items = Item::find($id);
+        return response()->json($items, 200);
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $items = new Item;
+        $items->name = request('name');
+        $items->price = request('price');
+        $items->save();
+
+        return response()->json($items, 201);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
-     * Display the specified resource.
+     *  Update the specified resource in storage.
      */
-    public function show(item $id)
+
+    public function update($id)
     {
         $items = Item::find($id);
+        $items->name = request('name');
+        $items->price = request('price');
+        $items->save();
+
         return response()->json($items, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(item $item)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, item $item)
-    {
-        //
-    }
+    // /**
+    //  *
+    //  */
+    // public function update(Request $request, item $item)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(item $item)
+    public function destroy($id)
     {
-        //
+        $items = Item::find($id);
+        $items->delete();
+
+        return response()->json($items, 200);
     }
 }
