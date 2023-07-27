@@ -19,10 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/', [ItemController::class, 'index']);
-Route::post('/', [ItemController::class, 'show']);
-Route::get('/', [ItemController::class, 'index']);
-Route::get('/', [ItemController::class, 'index']);
+Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('/items/{id}', [ItemController::class, 'show']);
+
+Route::post('/items', [ItemController::class, 'create']);
+
+Route::put('/items/{id}', [ItemController::class, 'update']);
+
+Route::delete('/items/{id}', [ItemController::class, 'destroy']);
+
 
 Route::get('/clients', [ClientController::class, 'index']);
 
