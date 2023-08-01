@@ -39,3 +39,9 @@ Route::get('/clients/{id}', [ClientController::class, 'show']);
 Route::post('/clients', [ClientController::class, 'create']);
 Route::put('/clients/{id}', [ClientController::class, 'update']);
 Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+
+Route::get('/client_invoices', [Client_InvoiceController::class, 'index']);
+Route::get('/client_invoices/{id}', [Client_InvoiceController::class, 'show']);
+Route::post('/client_invoices', [Client_InvoiceController::class, 'create']);
+Route::put('/client_invoices/{id}', [Client_InvoiceController::class, 'update']);
+Route::delete('/client_invoices/{id}', [Client_InvoiceController::class, 'destroy']);
