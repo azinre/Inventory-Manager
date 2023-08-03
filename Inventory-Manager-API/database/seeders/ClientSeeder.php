@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Client_Invoice;
+use App\Models\Client;
 
-class ClientInvoiceSeeder extends Seeder
+class ClientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Client_Invoice::factory()->count(100)->create();
+        Client::factory()->count(100)->create();
     }
 }
