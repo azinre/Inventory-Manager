@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ClientInvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProviderController;
@@ -46,7 +47,11 @@ Route::middleware(['auth:sanctum'])->group( function () {
     Route::post('/provider_invoices', [ProviderInvoiceController::class, 'create']);
     Route::put('/provider_invoices/{id}', [ProviderInvoiceController::class, 'update']);
     Route::delete('/provider_invoices/{id}', [ProviderInvoiceController::class, 'destroy']);
+  
+    Route::get('/client_invoices', [ClientInvoiceController::class, 'index']);
+    Route::get('/client_invoices/{id}', [ClientInvoiceController::class, 'show']);
+    Route::post('/client_invoices', [ProviderInvoiceController::class, 'create']);
+    Route::put('/client_invoices/{id}', [ClientInvoiceController::class, 'update']);
+    Route::delete('/client_invoices/{id}', [ClientInvoiceController::class, 'destroy']);
 
 });
-
-
