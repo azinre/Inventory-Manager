@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ClientInvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProviderController;
@@ -18,6 +19,11 @@ use App\Http\Controllers\ProviderController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/client_invoices', [ClientInvoiceController::class, 'create']);
+    //return $request->user();
 });
 
 
@@ -39,3 +45,9 @@ Route::get('/clients/{id}', [ClientController::class, 'show']);
 Route::post('/clients', [ClientController::class, 'create']);
 Route::put('/clients/{id}', [ClientController::class, 'update']);
 Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+
+Route::get('/client_invoices', [ClientInvoiceController::class, 'index']);
+Route::get('/client_invoices/{id}', [ClientInvoiceController::class, 'show']);
+
+Route::put('/client_invoices/{id}', [ClientInvoiceController::class, 'update']);
+Route::delete('/client_invoices/{id}', [ClientInvoiceController::class, 'destroy']);
