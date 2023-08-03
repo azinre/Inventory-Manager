@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ItemSeeder::class,
             ProviderSeeder::class,
-            ProviderInvoiceSeeder::class
+            ProviderInvoiceSeeder::class,
+            ClientSeeder::class,
+            ClientInvoiceSeeder::class
         ]);
     }
 }
