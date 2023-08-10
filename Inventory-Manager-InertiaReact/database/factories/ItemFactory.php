@@ -18,7 +18,7 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(3),
+            'name' => fake()->name(),
             'price' => $this->faker->randomFloat(2, 1, 1000), // Adjust the range according to your needs
         ];
     }
