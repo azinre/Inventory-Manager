@@ -2,6 +2,7 @@ import Card from '@/Components/Card';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
+import { Link } from '@inertiajs/react';
 
 export default function Items({ auth }) {
     const [items, setItems] = useState([]);    
